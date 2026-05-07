@@ -1,12 +1,14 @@
 * hel-agent-shell
 
-The Hel extension that integrates it with [[https://github.com/xenodium/agent-shell][Agent-shell]] — a native Emacs shell on
-top of [[https://www.masteringemacs.org/article/comint-writing-command-interpreter][Comint mode]] to interact with LLM agents powered by ACP ([[https://agentclientprotocol.com][Agent Client Protocol]]).
+A [[https://github.com/anuvyklack/hel][Hel]] extension that integrates Hel with [[https://github.com/xenodium/agent-shell][Agent-shell]] — a Comint-based Emacs shell
+for interacting with LLM agents via ACP ([[https://agentclientprotocol.com][Agent Client Protocol]]).
 
-** Enable
+** Install
+
 #+begin_src emacs-lisp
-(with-eval-after-load 'agent-shell
-  (require 'hel-agent-shell))
+(use-package hel-agent-shell
+  :vc (:url "https://github.com/anuvyklack/hel-agent-shell.git" :rev "main")
+  :after agent-shell)
 #+end_src
 
 ** Usage
@@ -18,7 +20,7 @@ top of [[https://www.masteringemacs.org/article/comint-writing-command-interpret
 | =, <tab>=   | cycle session mode                               |
 | =, RET=     | set session mode                                 |
 | =, m=       | set model                                        |
-| =, s=       | make screenshot and send it                      |
+| =, s=       | take a screenshot and send it                    |
 | =, !=       | execute shell command and insert its output      |
 | =, t=       | show token usage                                 |
 | =, p= / =, P= | add / remove pending request while model is busy |
@@ -36,8 +38,8 @@ top of [[https://www.masteringemacs.org/article/comint-writing-command-interpret
 
 *** Viewport
 
-Viewport buffer starts in Hel Motion state. You can switch to Normal state with
-=i= to copy some text. Switch back to Motion state with =Esc=.
+The viewport buffer opens in Hel Motion state. Press =i= to enter Normal state
+(for selecting and copying text), and =Esc= to return to Motion state.
 
 | Key       | Action                                     |
 |-----------+--------------------------------------------|
@@ -49,8 +51,8 @@ Viewport buffer starts in Hel Motion state. You can switch to Normal state with
 | =y=         | replay with "yes"                          |
 | =m=         | replay with "more"                         |
 | =a=         | replay with "again"                        |
-| =c=         | reply with "continue"                      |
-| =1= - =9=     | reply with number                          |
+| =c=         | replay with "continue"                     |
+| =1= - =9=     | replay with number                         |
 
 *** Compose buffer
 
@@ -65,8 +67,8 @@ Viewport buffer starts in Hel Motion state. You can switch to Normal state with
 
 ** Customization
 
-If you want, you can configure =Enter= to insert a new line in Insert state, and
-send the prompt in Normal state in Shell mode:
+To configure =Enter= to insert a newline in Insert state and send the prompt
+in Normal state:
 #+begin_src emacs-lisp
 (with-eval-after-load 'agent-shell
   (hel-keymap-set agent-shell-mode-map :state 'insert "RET" 'newline)

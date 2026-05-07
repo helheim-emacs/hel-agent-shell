@@ -5,7 +5,7 @@
 ;; Author: Yuriy Artemyev <anuvyklack@gmail.com>
 ;; Maintainer: Yuriy Artemyev <anuvyklack@gmail.com>
 ;; Version: 0.10.0
-;; Homepage: https://github.com/anuvyklack/hel
+;; Homepage: https://github.com/anuvyklack/hel-agent-shell
 ;; Package-Requires: ((emacs "29.1") (agent-shell "0.50.1")
 ;;
 ;; This file is not part of GNU Emacs.
