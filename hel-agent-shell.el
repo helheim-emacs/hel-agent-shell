@@ -67,6 +67,9 @@
   "p"   'hel-agent-shell-paste-dwim
   ","    hel-agent-shell-local-leader-map)
 
+(hel-keymap-set agent-shell-mode-map :state 'insert
+  "C-w" 'hel-delete-backward-word)
+
 (hel-set-initial-state 'agent-shell-viewport-view-mode 'motion)
 
 (hel-keymap-set agent-shell-viewport-view-mode-map :state 'motion
