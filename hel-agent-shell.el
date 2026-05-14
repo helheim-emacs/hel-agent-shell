@@ -66,6 +66,7 @@
   :doc "<local-leader> in agent-shell compose buffer."
   :parent hel-agent-shell-viewport-view-local-leader-map
   ","   '("send prompt" . agent-shell-viewport-compose-send)
+  "q"   '("cancel" . agent-shell-viewport-compose-cancel)
   "?"   '("help menu" . agent-shell-viewport-compose-help-menu))
 
 (hel-keymap-set agent-shell-mode-map
@@ -112,8 +113,8 @@
   "C-r" 'agent-shell-viewport-search-history
   "p"   'hel-agent-shell-paste-dwim
   ;;
-  "Z Z" 'agent-shell-viewport-compose-send
-  "Z Q" 'agent-shell-viewport-compose-cancel
+  "Z Z" '("send prompt" . agent-shell-viewport-compose-send)
+  "Z Q" '("cancel" . agent-shell-viewport-compose-cancel)
   ","    hel-agent-shell-viewport-edit-local-leader-map)
 
 (hel-keymap-set agent-shell-diff-mode-map

@@ -1,7 +1,7 @@
 * hel-agent-shell
 
-A [[https://github.com/anuvyklack/hel][Hel]] extension that integrates Hel with [[https://github.com/xenodium/agent-shell][Agent-shell]] — a Comint-based Emacs shell
-for interacting with LLM agents via ACP ([[https://agentclientprotocol.com][Agent Client Protocol]]).
+[[https://github.com/anuvyklack/hel][Hel]] extension that integrates it with [[https://github.com/xenodium/agent-shell][Agent-shell]] — an Emacs shell based on
+~comint-mode~ for interacting with LLM agents via ACP ([[https://agentclientprotocol.com][Agent Client Protocol]]).
 
 ** Install
 
@@ -30,9 +30,11 @@ for interacting with LLM agents via ACP ([[https://agentclientprotocol.com][Agen
 | Key       | Action                             |
 |-----------+------------------------------------|
 | =RET=       | send prompt                        |
-| =[[= / =]]=   | next / previous item               |
 | =C-r=       | history                            |
+| =]]= / =[[=   | next / previous item               |
 | =C-j= / =C-k= | next / previous item               |
+| =z j= / =z k= | next / previous item               |
+| =z u=       | up to beginning of current item    |
 | =p=         | paste text or image from clipboard |
 | =, ,=       | compose prompt in dedicated buffer |
 
@@ -45,7 +47,7 @@ The viewport buffer opens in Hel Motion state. Press =i= to enter Normal state
 |-----------+--------------------------------------------|
 | =i=         | switch to Normal state, =Esc= to switch back |
 | =C-j= / =C-k= | next / previous item on the page           |
-| =[[= / =]]=   | next / previous page                       |
+| =]]= / =[[=   | next / previous page                       |
 | =?= or =, ?=  | help menu                                  |
 | =r=         | replay                                     |
 | =y=         | replay with "yes"                          |
@@ -58,15 +60,15 @@ The viewport buffer opens in Hel Motion state. Press =i= to enter Normal state
 
 | Key        | Action                             |
 |------------+------------------------------------|
-| =, ,= or =Z Z= | send prompt                        |
-| =Z Q=        | discard prompt and cancel          |
+| =Z Z= or =, ,= | send prompt                        |
+| =Z Q= or =, q= | discard prompt and cancel          |
 | =[[=         | previous page                      |
-| =C-j= / =C-k=  | next / previous history            |
 | =C-r=        | history                            |
+| =C-j= / =C-k=  | next / previous history            |
 | =p=          | paste text or image from clipboard |
 
-- =ms`= :: If selection is linewise enclose it in tripple =```=, otherwise — in
-  single =`=.
+- =ms`= or =msi`= :: If the selection is linewise, surround it with triple =```=,
+  otherwise, use single =`=.
 
 ** Customization
 
