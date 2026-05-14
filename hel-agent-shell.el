@@ -12,7 +12,7 @@
 ;;
 ;;; Commentary:
 ;;
-;; The Hel extension that integrates it with Agent-shell.
+;; Hel extension that integrates it with Agent-shell.
 ;; https://github.com/xenodium/agent-shell
 ;;
 ;;; Code:
@@ -78,7 +78,7 @@
   "C-k" 'hel-agent-shell-previous-item
   "z j" 'hel-agent-shell-next-item
   "z k" 'hel-agent-shell-previous-item
-  "z u" 'hel-agent-shell-previous-item
+  "z u" 'hel-agent-shell-item-beginning
   "p"   'hel-agent-shell-paste-dwim
   ","    hel-agent-shell-local-leader-map)
 
@@ -174,6 +174,31 @@
       (goto-char next-pos)
       (when (eq next-pos prompt-pos)
         (comint-skip-prompt)))))
+
+;; zu
+(defun hel-agent-shell-item-beginning ()
+  "Jump to the beginning of current item."
+  (declare (modes agent-shell-mode))
+  (interactive)
+  (when-let*
+      ((start-point (point))
+       (block-start (when (get-text-property (point) 'agent-shell-ui-state)
+                      (if-let* ((block (agent-shell-ui--block-range :position (point))))
+                          (map-elt block :start))))
+       (target (if (/= (line-number-at-pos block-start)
+                       (line-number-at-pos start-point))
+                   block-start
+                 (save-excursion
+                   (goto-char block-start)
+                   (when-let* ((prev (text-property-search-backward
+                                      'agent-shell-ui-state nil
+                                      (lambda (_old-val new-val)
+                                        (if new-val
+                                            (map-elt new-val :navigatable)))
+                                      t)))
+                     (prop-match-beginning prev))))))
+    (deactivate-mark)
+    (goto-char target)))
 
 ;; p
 (hel-define-command hel-agent-shell-paste-dwim (&optional arg)
