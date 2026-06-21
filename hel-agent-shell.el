@@ -46,6 +46,7 @@
   "<tab>" '("cycle session mode" . agent-shell-cycle-session-mode)
   ","     '("compose prompt" . agent-shell-prompt-compose)
   "?"     '("help menu" . agent-shell-help-menu)
+  "l"     '("clear shell buffer" . agent-shell-clear-buffer)
   "m"     '("set model" . agent-shell-set-session-model)
   "v"     '("switch viewport/shell mode" . agent-shell-other-buffer)
   "s"     '("send screenshot" . agent-shell-send-screenshot)
@@ -100,6 +101,8 @@
   "[ [" 'agent-shell-viewport-previous-page
   "C-j" 'agent-shell-viewport-next-item
   "C-k" 'agent-shell-viewport-previous-item
+  "z j" 'agent-shell-viewport-next-item
+  "z k" 'agent-shell-viewport-previous-item
   ","    hel-agent-shell-viewport-view-local-leader-map)
 
 (hel-keymap-set agent-shell-viewport-view-mode-map :state 'normal
