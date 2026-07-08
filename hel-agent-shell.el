@@ -1,4 +1,4 @@
-;;; hel-agent-shell.el -*- lexical-binding: t -*-
+;;; hel-agent-shell.el --- Hel integration with Agent-shell -*- lexical-binding: t -*-
 ;;
 ;; Copyright © 2025-2026 Yuriy Artemyev
 ;;
@@ -6,7 +6,8 @@
 ;; Maintainer: Yuriy Artemyev <anuvyklack@gmail.com>
 ;; Version: 0.10.0
 ;; Homepage: https://github.com/anuvyklack/hel-agent-shell
-;; Package-Requires: ((emacs "29.1") (agent-shell "0.50.1")
+;; Package-Requires: ((emacs "29.1") (hel "0.12.0") (agent-shell "0.50.1") (dash "2.19.1"))
+;; SPDX-License-Identifier: GPL-3.0-or-later
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
