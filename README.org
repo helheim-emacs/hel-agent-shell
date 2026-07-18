@@ -1,5 +1,10 @@
 * hel-agent-shell
 
+#+begin_quote
+[!WARNING]
+This extension was merged into [[https://github.com/helheim-emacs/hel-collection][hel-collection]]
+#+end_quote
+
 [[https://github.com/anuvyklack/hel][Hel]] extension that integrates it with [[https://github.com/xenodium/agent-shell][Agent-shell]] — an Emacs shell based on
 ~comint-mode~ for interacting with LLM agents via ACP ([[https://agentclientprotocol.com][Agent Client Protocol]]).
 
